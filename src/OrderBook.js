@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from './OrderBook.module.scss';
+
 export const OrderBook = () => {
   const [bids, setBids] = React.useState();
   const [asks, setAsks] = React.useState();
@@ -26,11 +28,14 @@ export const OrderBook = () => {
   return (
     <>
       <div
+        className={styles.table}
         style={{
           display: "grid",
-          gridTemplateColumns: "6rem 6rem 6rem"
+          gridTemplateColumns: "100px 100px 100px"
         }}
       >
+        <>
+        {/* {['price', 'size', 'total'].map(header => <div>{header}</div>)} */}
         {asks &&
           asks.map((a, i) => (
             <>
@@ -39,12 +44,14 @@ export const OrderBook = () => {
               <div>{((a[1] / totalAsks) * 100).toFixed(1)}</div>
             </>
           ))}
+        </>
       </div>
       <div>------------------------</div>
       <div
+        className={styles.table}
         style={{
           display: "grid",
-          gridTemplateColumns: "6rem 6rem 6rem"
+          gridTemplateColumns: "100px 100px 100px"
         }}
       >
         {bids &&
